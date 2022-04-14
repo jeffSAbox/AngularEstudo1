@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AngularEstudo1';
+  titulo = 'AngularEstudo1';
+  url = 'http://hd.wallpaperswide.com/thumbs/space_aesthetic-t2.jpg';
+  legenda = 'espaco!';
 }
