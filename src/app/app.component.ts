@@ -7,6 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   titulo = 'AngularEstudo1';
-  url = 'http://hd.wallpaperswide.com/thumbs/space_aesthetic-t2.jpg';
-  legenda = 'espaco!';
+
+  listaFotos = [
+
+    {
+      url: "http://hd.wallpaperswide.com/thumbs/garden_flowers_5-t2.jpg",
+      legenda: "flores"
+    },
+    {
+      url: "http://hd.wallpaperswide.com/thumbs/space_aesthetic-t2.jpg",
+      legenda: "espaco"
+    },
+    {
+      url: "http://hd.wallpaperswide.com/thumbs/macos_big_sur_apple_abstract-t2.jpg",
+      legenda: "abstrato"
+    }
+
+  ]
+
 }
