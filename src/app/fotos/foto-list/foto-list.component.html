@@ -1,0 +1,7 @@
+<h3>{{ titulo }}</h3>
+
+<ae-foto
+    *ngFor="let foto of listaFotos"
+    [url]="foto.url"
+    [legenda]="foto.legenda"
+></ae-foto>
