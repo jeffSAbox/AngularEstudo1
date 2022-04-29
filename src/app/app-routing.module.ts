@@ -5,7 +5,7 @@ import { NaoEncontradoComponent } from './errors/nao-encontrado/nao-encontrado.c
 import { FotoListComponent } from './fotos/foto-list/foto-list.component';
 
 const routes: Routes = [
-  { path: 'listarfotos', component: FotoListComponent },
+  { path: 'listarfotos/:usuarioNome', component: FotoListComponent },
   { path: '**', component: NaoEncontradoComponent }
 ];
 
