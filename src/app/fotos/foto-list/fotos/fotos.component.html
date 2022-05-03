@@ -1,0 +1,10 @@
+<ol class="list-unstyled">
+    <li *ngFor="let colunas of linhas" class="row">
+        <div *ngFor="let foto of colunas" class="col-4">
+            <ae-foto            
+                [url]="foto.url"
+                [legenda]="foto.legenda"
+            ></ae-foto>
+        </div>
+    </li>
+</ol>
