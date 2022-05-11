@@ -14,6 +14,7 @@ export class FotoListComponent implements OnInit {
   titulo = 'AngularEstudo1';
 
   listaFotos: Foto[] = [];
+  filtro: string = '';
 
   constructor(private fotoService: FotoService,
     private activatedRoute: ActivatedRoute

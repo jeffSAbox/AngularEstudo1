@@ -1,3 +1,15 @@
 <h3>{{ titulo }}</h3>
 
-<app-fotos [fotos]="listaFotos" ></app-fotos>
+<div class="text-center mt-3 mb-3">
+    <form>
+        <input
+            class="rounded"
+            type="search"
+            placeholder="search..."
+            autofocus
+            (keyup)="filtro = $event.target.value"
+            >
+    </form>
+</div>
+
+<app-fotos [fotos]="listaFotos | filtrarPorDescricao: filtro" ></app-fotos>
