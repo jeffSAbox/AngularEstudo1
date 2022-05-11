@@ -16,20 +16,11 @@ export class FotoListComponent implements OnInit {
   listaFotos: Foto[] = [];
   filtro: string = '';
 
-  constructor(private fotoService: FotoService,
-    private activatedRoute: ActivatedRoute
+  constructor(private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-      
-    const nomeUsuario = this.activatedRoute.snapshot.params.usuarioNome;
-
-    this.fotoService
-      .listarFotosDoUsuario(nomeUsuario)
-      .subscribe(foto => {
-        this.listaFotos = foto;
-      });
-
+    this.listaFotos = this.activatedRoute.snapshot.data.listaFotosResolve;
   }
 
 }
