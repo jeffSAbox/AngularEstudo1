@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import { Foto } from '../foto/foto';
-import { FotoService } from '../foto/foto.service';
 
 @Component({
   selector: 'app-foto-list',
@@ -15,12 +16,15 @@ export class FotoListComponent implements OnInit {
 
   listaFotos: Foto[] = [];
   filtro: string = '';
+  deboche: Subject<string> = new Subject<string>();
 
-  constructor(private activatedRoute: ActivatedRoute
-    ) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.listaFotos = this.activatedRoute.snapshot.data.listaFotosResolve;
+    this.deboche
+      .pipe(debounceTime(300))
+      .subscribe(filtro => this.filtro = filtro);
   }
 
 }
