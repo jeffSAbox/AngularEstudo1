@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { Foto } from '../foto/foto';
+import { FotoService } from '../foto/foto.service';
 
 @Component({
   selector: 'app-foto-list',
@@ -17,10 +18,17 @@ export class FotoListComponent implements OnInit, OnDestroy {
   listaFotos: Foto[] = [];
   filtro: string = '';
   deboche: Subject<string> = new Subject<string>();
+  temMais: boolean = true;
+  usuarioNome: string = '';
+  paginaAtual: number = 1;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private fotoService: FotoService
+    ) { }
 
   ngOnInit(): void {
+    this.usuarioNome = this.activatedRoute.snapshot.params.usuarioNome;
     this.listaFotos = this.activatedRoute.snapshot.data.listaFotosResolve;
     this.deboche
       .pipe(debounceTime(300))
@@ -31,4 +39,12 @@ export class FotoListComponent implements OnInit, OnDestroy {
     this.deboche.unsubscribe();
   }
 
+  load() {
+    this.fotoService
+      .listarFotosDoUsuarioPaginado(this.usuarioNome, ++this.paginaAtual)
+      .subscribe(fotos => {
+        this.listaFotos = this.listaFotos.concat(fotos);
+        if (!fotos.length) this.temMais = false;
+      });
+  }
 }

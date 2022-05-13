@@ -13,3 +13,5 @@
 </div>
 
 <app-fotos [fotos]="listaFotos | filtrarPorDescricao: filtro" ></app-fotos>
+
+<app-botao-carregar (click)="load()" [temMais]="temMais"></app-botao-carregar>
